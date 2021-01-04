@@ -21,7 +21,7 @@ public class DeliverymanController {
 
     @GetMapping("/{id}")
     public ResponseEntity findById(@PathVariable Long id){
-        return ResponseEntity.ok(deliverymanService.getById(id));
+        return ResponseEntity.ok(deliverymanService.findById(id));
     }
 
     @GetMapping
@@ -38,22 +38,14 @@ public class DeliverymanController {
 
     @PutMapping("/{id}")
     public ResponseEntity save(@PathVariable Long id, @RequestBody DeliverymanDTO deliverymanDTO){
-        try {
-            deliverymanService.save(id, deliverymanDTO);
-        } catch (Exception e){
-            return ResponseEntity.notFound().build();
-        }
+        deliverymanService.save(id, deliverymanDTO);
 
         return ResponseEntity.ok(id);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity delete(@PathVariable Long id){
-        try{
-            deliverymanService.delete(id);
-        } catch (Exception e){
-            return ResponseEntity.notFound().build();
-        }
+        deliverymanService.delete(id);
 
         return ResponseEntity.noContent().build();
     }

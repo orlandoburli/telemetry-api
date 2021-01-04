@@ -11,4 +11,6 @@ public interface DeliverymanRepository extends JpaRepository<Deliveryman, Long> 
     public List<Deliveryman> findAllByActive(Boolean active);
 
     public Optional<Deliveryman> findByDeliverymanIdAndActive(Long deliverymanId, Boolean active);
+
+
 }

@@ -2,6 +2,7 @@ package com.arthur.takeda.icomida.telemetry.demo.service;
 
 import com.arthur.takeda.icomida.telemetry.demo.dto.DeliverymanDTO;
 import com.arthur.takeda.icomida.telemetry.demo.dto.mapper.DeliverymanMapper;
+import com.arthur.takeda.icomida.telemetry.demo.exception.NotFoundException;
 import com.arthur.takeda.icomida.telemetry.demo.model.Deliveryman;
 import com.arthur.takeda.icomida.telemetry.demo.repository.DeliverymanRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,11 +23,11 @@ public class DeliverymanService {
     @Autowired
     private DeliverymanMapper mapper;
 
-    public DeliverymanDTO getById(Long id){
+    public DeliverymanDTO findById(Long id){
         Optional<Deliveryman> deliveryman = deliverymanRepository.findByDeliverymanIdAndActive(id, Boolean.TRUE);
 
         if(deliveryman.isEmpty()){
-            return new DeliverymanDTO();
+            throw new NotFoundException("Deliveryman not found");
         }
 
         return mapper.toDeliverymanDTO(deliveryman.get());
@@ -49,12 +50,12 @@ public class DeliverymanService {
         return deliveryman.getDeliverymanId();
     }
 
-    public Long save(Long id, DeliverymanDTO deliverymanDTO) throws Exception {
+    public Long save(Long id, DeliverymanDTO deliverymanDTO) throws NotFoundException {
         Optional<Deliveryman> deliverymanRecord = deliverymanRepository.findById(id);
         Deliveryman deliveryman;
 
         if(deliverymanRecord.isEmpty()){
-            throw new Exception("Deliveryman not found");
+            throw new NotFoundException("Deliveryman not found");
         }
 
         deliverymanDTO.setDeliverymanId(id);
@@ -65,12 +66,12 @@ public class DeliverymanService {
     }
 
     @Transactional
-    public void delete(Long id) throws Exception {
+    public void delete(Long id) throws NotFoundException {
         Optional<Deliveryman> deliverymanRecord = deliverymanRepository.findByDeliverymanIdAndActive(id, Boolean.TRUE);
         Deliveryman deliveryman;
 
         if(deliverymanRecord.isEmpty()){
-            throw new Exception("Deliveryman not found");
+            throw new NotFoundException("Deliveryman not found");
         }
 
         deliveryman = deliverymanRecord.get();

@@ -36,22 +36,14 @@ public class PositionLogController {
 
     @PutMapping("/{id}")
     public ResponseEntity save(@PathVariable Long id, @RequestBody PositionLogDTO positionLogDTO)  {
-        try{
-            positionLogService.save(positionLogDTO, id);
-        } catch (Exception e){
-            return ResponseEntity.notFound().build();
-        }
+        positionLogService.save(positionLogDTO, id);
 
         return ResponseEntity.ok(id);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity delete(@PathVariable Long id){
-        try{
-            positionLogService.delete(id);
-        } catch(Exception e){
-            return ResponseEntity.notFound().build();
-        }
+        positionLogService.delete(id);
 
         return ResponseEntity.noContent().build();
     }
