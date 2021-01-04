@@ -25,7 +25,7 @@ public abstract class PositionLogDecorator implements PositionLogMapper {
     public PositionLog toPositionLog(PositionLogDTO positionLogDTO){
         PositionLog positionLog = delegate.toPositionLog(positionLogDTO);
 
-        DeliverymanDTO deliverymanDTO = deliverymanService.getById(positionLogDTO.getDeliverymanId());
+        DeliverymanDTO deliverymanDTO = deliverymanService.findById(positionLogDTO.getDeliverymanId());
 
         positionLog.setDeliveryman(deliverymanMapper.toDeliveryman(deliverymanDTO));
 
