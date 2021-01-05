@@ -49,14 +49,12 @@ public class PositionLogService {
     public Long save(PositionLogDTO positionLogDTO){
         PositionLog positionLog = mapper.toPositionLog(positionLogDTO);
 
-        System.out.println(positionLogRepository.findByDeliverymanAndActiveAndLast(positionLogDTO.getDeliverymanId(), Boolean.TRUE).get().getPositionLogId());
-
         positionLogRepository.save(positionLog);
 
         return positionLog.getPositionLogId();
     }
 
-    public Long save(PositionLogDTO positionLogDTO, Long id) throws NotFoundException {
+    public Long save(Long id, PositionLogDTO positionLogDTO) throws NotFoundException {
         Optional<PositionLog> positionLog = positionLogRepository.findByPositionLogIdAndActive(id, Boolean.TRUE);
 
         if(positionLog.isEmpty()){
