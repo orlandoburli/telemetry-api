@@ -36,7 +36,7 @@ public class PositionLogController {
 
     @PutMapping("/{id}")
     public ResponseEntity save(@PathVariable Long id, @RequestBody PositionLogDTO positionLogDTO)  {
-        positionLogService.save(positionLogDTO, id);
+        positionLogService.save(id, positionLogDTO);
 
         return ResponseEntity.ok(id);
     }

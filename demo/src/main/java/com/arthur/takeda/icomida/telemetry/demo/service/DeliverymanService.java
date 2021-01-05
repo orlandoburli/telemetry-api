@@ -51,7 +51,7 @@ public class DeliverymanService {
     }
 
     public Long save(Long id, DeliverymanDTO deliverymanDTO) throws NotFoundException {
-        Optional<Deliveryman> deliverymanRecord = deliverymanRepository.findById(id);
+        Optional<Deliveryman> deliverymanRecord = deliverymanRepository.findByDeliverymanIdAndActive(id, Boolean.TRUE);
         Deliveryman deliveryman;
 
         if(deliverymanRecord.isEmpty()){
