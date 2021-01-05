@@ -18,9 +18,7 @@ public class PositionLogController {
     private PositionLogService positionLogService;
 
     @GetMapping("/{id}")
-    public ResponseEntity findById(@PathVariable Long id){
-        return ResponseEntity.ok(positionLogService.findById(id));
-    }
+    public ResponseEntity findById(@PathVariable Long id){ return ResponseEntity.ok(positionLogService.findById(id)); }
 
     @GetMapping
     public ResponseEntity findAll(){

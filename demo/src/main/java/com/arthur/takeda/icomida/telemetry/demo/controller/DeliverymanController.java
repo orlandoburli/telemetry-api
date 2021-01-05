@@ -20,9 +20,7 @@ public class DeliverymanController {
     DeliverymanService deliverymanService;
 
     @GetMapping("/{id}")
-    public ResponseEntity findById(@PathVariable Long id){
-        return ResponseEntity.ok(deliverymanService.findById(id));
-    }
+    public ResponseEntity findById(@PathVariable Long id){ return ResponseEntity.ok(deliverymanService.findById(id)); }
 
     @GetMapping
     public ResponseEntity findAll(){

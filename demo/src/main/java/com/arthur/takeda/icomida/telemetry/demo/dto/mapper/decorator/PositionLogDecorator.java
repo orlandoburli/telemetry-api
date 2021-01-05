@@ -34,7 +34,10 @@ public abstract class PositionLogDecorator implements PositionLogMapper {
 
     @Override
     public PositionLogDTO toPositionLogDto(PositionLog positionLog) {
-        return delegate.toPositionLogDto(positionLog);
-    }
+        PositionLogDTO positionLogDTO = delegate.toPositionLogDto(positionLog);
 
+        positionLogDTO.setDeliverymanId(positionLog.getDeliveryman().getDeliverymanId());
+
+        return positionLogDTO;
+    }
 }
