@@ -1,6 +1,7 @@
 package com.arthur.takeda.icomida.telemetry.demo.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 @Entity(name = "position_log")
@@ -11,10 +12,10 @@ public class PositionLog {
     @Column(name = "position_log_id")
     private Long positionLogId;
 
-    @Column(length = 9, precision = 7)
+    @Column(length = 9, precision = 7, nullable = false)
     private BigDecimal latitude;
 
-    @Column(length = 10, precision = 7)
+    @Column(length = 10, precision = 7, nullable = false)
     private BigDecimal longitude;
 
     private Integer battery;

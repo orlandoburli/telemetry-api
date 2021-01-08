@@ -1,12 +1,9 @@
 package com.arthur.takeda.icomida.telemetry.demo.controller;
 
 import com.arthur.takeda.icomida.telemetry.demo.dto.PositionLogDTO;
-import com.arthur.takeda.icomida.telemetry.demo.model.PositionLog;
 import com.arthur.takeda.icomida.telemetry.demo.service.PositionLogService;
-import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;

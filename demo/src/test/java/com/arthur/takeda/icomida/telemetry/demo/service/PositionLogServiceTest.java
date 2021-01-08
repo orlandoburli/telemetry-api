@@ -14,9 +14,6 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.util.List;
-import java.util.Optional;
-
 @ExtendWith(MockitoExtension.class)
 public class PositionLogServiceTest {
 
@@ -32,50 +29,6 @@ public class PositionLogServiceTest {
     private PositionLogTestFactory positionLogTestFactory = new PositionLogTestFactory();
 
     @Test
-    public void testGetPositionLogExisting(){
-        Long id = 1l;
-
-        PositionLog positionLog = positionLogTestFactory.positionLog(id);
-        PositionLogDTO positionLogDTO = positionLogTestFactory.positionLogDTO(id);
-
-        Mockito.when(positionLogRepository.findByPositionLogIdAndActive(id, Boolean.TRUE)).thenReturn(Optional.of(positionLog));
-        Mockito.when(mapper.toPositionLogDto(positionLog)).thenReturn(positionLogDTO);
-
-        compare(positionLogDTO, positionLogService.findById(id));
-    }
-
-    @Test
-    public void testGetPositionLogAbsent(){
-        Long id = 1l;
-
-        Mockito.when(positionLogRepository.findByPositionLogIdAndActive(id, Boolean.TRUE)).thenReturn(Optional.empty());
-
-        Assertions.assertThrows(NotFoundException.class, () -> positionLogService.findById(id));
-    }
-
-    @Test
-    public void testGetAllPositionLog(){
-        Long id = 1l;
-
-        List<PositionLog> positionLogList = List.of(positionLogTestFactory.positionLog(id), positionLogTestFactory.positionLog(id + 1));
-        List<PositionLogDTO> positionLogDTOList = List.of(positionLogTestFactory.positionLogDTO(id), positionLogTestFactory.positionLogDTO(id + 1));
-
-        Mockito.when(positionLogRepository.findAllByActive(Boolean.TRUE)).thenReturn(positionLogList);
-        Mockito.when(mapper.toPositionLogDto(positionLogList.get(0))).thenReturn(positionLogDTOList.get(0));
-        Mockito.when(mapper.toPositionLogDto(positionLogList.get(1))).thenReturn(positionLogDTOList.get(1));
-
-        List<PositionLogDTO> result = positionLogService.findAll();
-
-        int i = 0;
-
-        while(i < result.size()){
-            compare(result.get(i), positionLogDTOList.get(i));
-
-            i++;
-        }
-    }
-
-    @Test
     public void testSavePositionLog(){
         Long id = 1l;
 
@@ -83,41 +36,9 @@ public class PositionLogServiceTest {
         PositionLogDTO positionLogDTO = positionLogTestFactory.positionLogDTO(id);
 
         Mockito.when(mapper.toPositionLog(positionLogDTO)).thenReturn(positionLog);
+        Mockito.when(positionLogRepository.save(positionLog)).thenReturn(positionLog);
 
         Assertions.assertEquals(id, positionLogService.save(positionLogDTO));
-    }
-
-    @Test
-    public void testAlterPositionLogExisting(){
-        Long id = 1l;
-
-        PositionLog positionLog = positionLogTestFactory.positionLog(id);
-        PositionLogDTO positionLogDTO = positionLogTestFactory.positionLogDTO(id);
-
-        Mockito.when(positionLogRepository.findByPositionLogIdAndActive(id, Boolean.TRUE)).thenReturn(Optional.of(positionLog));
-        Mockito.when(mapper.toPositionLog(positionLogDTO)).thenReturn(positionLog);
-
-        Assertions.assertEquals(id, positionLogService.save(id, positionLogDTO));
-    }
-
-    @Test
-    public void testAlterPositionLogAbsent(){
-        Long id = 1l;
-
-        PositionLogDTO positionLogDTO = positionLogTestFactory.positionLogDTO(id);
-
-        Mockito.when(positionLogRepository.findByPositionLogIdAndActive(id, Boolean.TRUE)).thenReturn(Optional.empty());
-
-        Assertions.assertThrows(NotFoundException.class, () -> positionLogService.save(id, positionLogDTO));
-    }
-
-    @Test
-    public void testDeletePositionLogAbsent(){
-        Long id = 1l;
-
-        Mockito.when(positionLogRepository.findByPositionLogIdAndActive(id, Boolean.TRUE)).thenReturn(Optional.empty());
-
-        Assertions.assertThrows(NotFoundException.class, () -> positionLogService.delete(id));
     }
 
     private void compare(PositionLogDTO expected, PositionLogDTO actual){
