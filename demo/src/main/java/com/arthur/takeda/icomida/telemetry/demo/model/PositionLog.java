@@ -1,6 +1,7 @@
 package com.arthur.takeda.icomida.telemetry.demo.model;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Entity(name = "position_log")
 public class PositionLog {
@@ -10,25 +11,25 @@ public class PositionLog {
     @Column(name = "position_log_id")
     private Long positionLogId;
 
-    private Double latitude;
+    @Column(length = 9, precision = 7)
+    private BigDecimal latitude;
 
-    private Double longitude;
+    @Column(length = 10, precision = 7)
+    private BigDecimal longitude;
 
-    private Double battery;
+    private Integer battery;
 
     private Boolean active;
 
-    @ManyToOne
-    @JoinColumn(name = "deliveryman_id")
-    private Deliveryman deliveryman;
+    private Long deliverymanId;
 
-    public PositionLog(Long positionLogId, Double latitude, Double longitude, Double battery, Deliveryman deliveryman) {
+    public PositionLog(Long positionLogId, BigDecimal latitude, BigDecimal longitude, Integer battery, Long deliverymanId) {
         this.positionLogId = positionLogId;
         this.latitude = latitude;
         this.longitude = longitude;
         this.battery = battery;
         this.active = Boolean.TRUE;
-        this.deliveryman = deliveryman;
+        this.deliverymanId = deliverymanId;
     }
 
     public PositionLog() {
@@ -43,27 +44,25 @@ public class PositionLog {
         this.positionLogId = positionLogId;
     }
 
-    public Double getLatitude() {
+    public BigDecimal getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(Double latitude) {
-        this.latitude = latitude;
-    }
+    public void setLatitude(BigDecimal latitude) { this.latitude = latitude; }
 
-    public Double getLongitude() {
+    public BigDecimal getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(Double longitude) {
+    public void setLongitude(BigDecimal longitude) {
         this.longitude = longitude;
     }
 
-    public Double getBattery() {
+    public Integer getBattery() {
         return battery;
     }
 
-    public void setBattery(Double battery) {
+    public void setBattery(Integer battery) {
         this.battery = battery;
     }
 
@@ -75,11 +74,11 @@ public class PositionLog {
         this.active = active;
     }
 
-    public Deliveryman getDeliveryman() {
-        return deliveryman;
+    public Long getDeliverymanId() {
+        return deliverymanId;
     }
 
-    public void setDeliveryman(Deliveryman deliveryman) {
-        this.deliveryman = deliveryman;
+    public void setDeliverymanId(Long deliverymanId) {
+        this.deliverymanId = deliverymanId;
     }
 }

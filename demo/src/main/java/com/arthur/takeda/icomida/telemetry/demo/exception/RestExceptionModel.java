@@ -5,17 +5,17 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.http.HttpStatus;
 
-public class RestException {
+public class RestExceptionModel {
 
     HttpStatus httpStatus;
     String mensagem;
 
-    public RestException(HttpStatus httpStatus, String mensagem) {
+    public RestExceptionModel(HttpStatus httpStatus, String mensagem) {
         this.httpStatus = httpStatus;
         this.mensagem = mensagem;
     }
 
-    public RestException() {
+    public RestExceptionModel() {
     }
 
     public HttpStatus getHttpStatus() {
