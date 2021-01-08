@@ -1,9 +1,9 @@
 package com.arthur.takeda.icomida.telemetry.demo.testFactory;
 
-import com.arthur.takeda.icomida.telemetry.demo.dto.DeliverymanDTO;
 import com.arthur.takeda.icomida.telemetry.demo.dto.PositionLogDTO;
-import com.arthur.takeda.icomida.telemetry.demo.model.Deliveryman;
 import com.arthur.takeda.icomida.telemetry.demo.model.PositionLog;
+
+import java.math.BigDecimal;
 
 public class PositionLogTestFactory {
 
@@ -11,10 +11,10 @@ public class PositionLogTestFactory {
         PositionLog positionLog = new PositionLog();
 
         positionLog.setPositionLogId(id);
-        positionLog.setBattery(99d);
-        positionLog.setLatitude(34.7625659d);
-        positionLog.setLongitude(137.6329023d);
-        positionLog.setDeliveryman(new DeliverymanTestFactory().deliveryman(id));
+        positionLog.setBattery(99);
+        positionLog.setLatitude(new BigDecimal(34.7625659));
+        positionLog.setLongitude(new BigDecimal(137.6329023));
+        positionLog.setDeliverymanId(id);
 
         return positionLog;
     }
@@ -23,9 +23,9 @@ public class PositionLogTestFactory {
         PositionLogDTO positionLogDTO = new PositionLogDTO();
 
         positionLogDTO.setPositionLogId(id);
-        positionLogDTO.setBattery(99d);
-        positionLogDTO.setLatitude(34.7625659d);
-        positionLogDTO.setLongitude(137.6329023d);
+        positionLogDTO.setBattery(99);
+        positionLogDTO.setLatitude(new BigDecimal(34.7625659));
+        positionLogDTO.setLongitude(new BigDecimal(137.6329023));
         positionLogDTO.setDeliverymanId(id);
 
         return positionLogDTO;

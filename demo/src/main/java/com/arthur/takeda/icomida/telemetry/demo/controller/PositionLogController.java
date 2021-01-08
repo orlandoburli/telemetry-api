@@ -6,8 +6,10 @@ import com.arthur.takeda.icomida.telemetry.demo.service.PositionLogService;
 import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.net.URI;
 
 @RestController
@@ -17,33 +19,10 @@ public class PositionLogController {
     @Autowired
     private PositionLogService positionLogService;
 
-    @GetMapping("/{id}")
-    public ResponseEntity findById(@PathVariable Long id){ return ResponseEntity.ok(positionLogService.findById(id)); }
-
-    @GetMapping
-    public ResponseEntity findAll(){
-        return ResponseEntity.ok(positionLogService.findAll());
-    }
-
     @PostMapping("/post")
-    public ResponseEntity save(@RequestBody PositionLogDTO positionLogDTO){
+    public ResponseEntity save(@Valid @RequestBody PositionLogDTO positionLogDTO){
         Long id = positionLogService.save(positionLogDTO);
 
         return ResponseEntity.created(URI.create("" + id)).build();
     }
-
-    @PutMapping("/{id}")
-    public ResponseEntity save(@PathVariable Long id, @RequestBody PositionLogDTO positionLogDTO)  {
-        positionLogService.save(id, positionLogDTO);
-
-        return ResponseEntity.ok(id);
-    }
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity delete(@PathVariable Long id){
-        positionLogService.delete(id);
-
-        return ResponseEntity.noContent().build();
-    }
-
 }
