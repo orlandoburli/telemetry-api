@@ -1,6 +1,8 @@
 package com.arthur.takeda.icomida.telemetry.demo.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
@@ -13,16 +15,28 @@ public class PositionLog {
     private Long positionLogId;
 
     @Column(length = 9, precision = 7, nullable = false)
+    @DecimalMax(value = "90")
+    @DecimalMin(value = "-90")
+    @NotNull
     private BigDecimal latitude;
 
     @Column(length = 10, precision = 7, nullable = false)
+    @DecimalMax(value = "180")
+    @DecimalMin(value = "-180")
+    @NotNull
     private BigDecimal longitude;
 
+    @Column(length = 3, nullable = false)
+    @DecimalMax(value = "100")
+    @DecimalMin(value = "1")
+    @NotNull
     private Integer battery;
 
-    private Boolean active;
-
+    @Column(nullable = false)
+    @NotNull
     private Long deliverymanId;
+
+    private Boolean active;
 
     public PositionLog(Long positionLogId, BigDecimal latitude, BigDecimal longitude, Integer battery, Long deliverymanId) {
         this.positionLogId = positionLogId;

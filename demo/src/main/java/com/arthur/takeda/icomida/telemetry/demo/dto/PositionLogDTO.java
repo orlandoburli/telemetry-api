@@ -23,7 +23,6 @@ public class PositionLogDTO {
     private BigDecimal longitude;
 
     @NotNull(message = "Informe a bateria!")
-    @Digits(fraction = 0, integer = 3)
     @DecimalMax(value = "100")
     @DecimalMin(value = "1")
     private Integer battery;
@@ -37,6 +36,9 @@ public class PositionLogDTO {
         this.longitude = longitude;
         this.battery = battery;
         this.deliverymanId = deliverymanId;
+
+        this.latitude = this.latitude.setScale(9);
+        this.longitude = this.longitude.setScale(10);
     }
 
     public PositionLogDTO() {
