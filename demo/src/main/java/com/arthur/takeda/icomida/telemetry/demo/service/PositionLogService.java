@@ -2,16 +2,10 @@ package com.arthur.takeda.icomida.telemetry.demo.service;
 
 import com.arthur.takeda.icomida.telemetry.demo.dto.PositionLogDTO;
 import com.arthur.takeda.icomida.telemetry.demo.dto.mapper.PositionLogMapper;
-import com.arthur.takeda.icomida.telemetry.demo.exception.NotFoundException;
 import com.arthur.takeda.icomida.telemetry.demo.model.PositionLog;
 import com.arthur.takeda.icomida.telemetry.demo.repository.PositionLogRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import javax.transaction.Transactional;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class PositionLogService {
