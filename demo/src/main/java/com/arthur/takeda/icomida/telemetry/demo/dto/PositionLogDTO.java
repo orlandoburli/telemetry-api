@@ -1,7 +1,5 @@
 package com.arthur.takeda.icomida.telemetry.demo.dto;
 
-import org.springframework.validation.annotation.Validated;
-
 import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Digits;
@@ -24,13 +22,13 @@ public class PositionLogDTO {
     @DecimalMin(value = "-180")
     private BigDecimal longitude;
 
-    @NotNull(message = "Informe a bateria")
+    @NotNull(message = "Informe a bateria!")
     @Digits(fraction = 0, integer = 3)
     @DecimalMax(value = "100")
-    @DecimalMax(value = "0")
+    @DecimalMin(value = "1")
     private Integer battery;
 
-    @NotNull(message = "Informe o deliverymanId")
+    @NotNull(message = "Informe o deliverymanId!")
     private Long deliverymanId;
 
     public PositionLogDTO(Long positionLogId, BigDecimal latitude, BigDecimal longitude, Integer battery, Boolean active, Long deliverymanId) {
