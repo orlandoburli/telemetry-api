@@ -2,7 +2,6 @@ package com.arthur.takeda.icomida.telemetry.demo.service;
 
 import com.arthur.takeda.icomida.telemetry.demo.dto.PositionLogDTO;
 import com.arthur.takeda.icomida.telemetry.demo.dto.mapper.PositionLogMapper;
-import com.arthur.takeda.icomida.telemetry.demo.exception.NotFoundException;
 import com.arthur.takeda.icomida.telemetry.demo.model.PositionLog;
 import com.arthur.takeda.icomida.telemetry.demo.repository.PositionLogRepository;
 import com.arthur.takeda.icomida.telemetry.demo.testFactory.PositionLogTestFactory;
