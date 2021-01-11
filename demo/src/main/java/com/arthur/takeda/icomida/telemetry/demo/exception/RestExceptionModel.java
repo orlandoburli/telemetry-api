@@ -7,8 +7,8 @@ import org.springframework.http.HttpStatus;
 
 public class RestExceptionModel {
 
-    HttpStatus httpStatus;
-    String mensagem;
+    private HttpStatus httpStatus;
+    private String mensagem;
 
     public RestExceptionModel(HttpStatus httpStatus, String mensagem) {
         this.httpStatus = httpStatus;
