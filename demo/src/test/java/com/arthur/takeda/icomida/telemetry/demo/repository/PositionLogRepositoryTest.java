@@ -46,7 +46,7 @@ public class PositionLogRepositoryTest {
     public void testPositionLogSaveWithAllArgumentsWithLatitudePastMaxValue(){
         PositionLog positionLog = new PositionLogTestFactory().positionLog(1l);
 
-        positionLog.setLatitude(new BigDecimal("91"));
+        positionLog.setLatitude(new BigDecimal(91));
 
         Assertions.assertThrows(ConstraintViolationException.class, () -> repository.save(positionLog));
     }
@@ -55,7 +55,7 @@ public class PositionLogRepositoryTest {
     public void testPositionLogSaveWithAllArgumentsWithLatitudePastMinValue(){
         PositionLog positionLog = new PositionLogTestFactory().positionLog(1l);
 
-        positionLog.setLatitude(new BigDecimal("-91"));
+        positionLog.setLatitude(new BigDecimal(-91));
 
         Assertions.assertThrows(ConstraintViolationException.class, () -> repository.save(positionLog));
     }
@@ -73,7 +73,7 @@ public class PositionLogRepositoryTest {
     public void testPositionLogSaveWithAllArgumentsWithLongitudePastMaxValue(){
         PositionLog positionLog = new PositionLogTestFactory().positionLog(1l);
 
-        positionLog.setLongitude(new BigDecimal("181"));
+        positionLog.setLongitude(new BigDecimal(181));
 
         Assertions.assertThrows(ConstraintViolationException.class, () -> repository.save(positionLog));
     }
@@ -82,7 +82,7 @@ public class PositionLogRepositoryTest {
     public void testPositionLogSaveWithAllArgumentsWithLongitudePastMinValue(){
         PositionLog positionLog = new PositionLogTestFactory().positionLog(1l);
 
-        positionLog.setLongitude(new BigDecimal("-181"));
+        positionLog.setLongitude(new BigDecimal(-181));
 
         Assertions.assertThrows(ConstraintViolationException.class, () -> repository.save(positionLog));
     }
