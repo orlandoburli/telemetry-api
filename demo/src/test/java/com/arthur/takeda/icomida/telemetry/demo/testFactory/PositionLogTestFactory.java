@@ -13,7 +13,6 @@ public class PositionLogTestFactory {
 
     public PositionLog positionLog(Long id){
         PositionLog positionLog = new PositionLog();
-
         positionLog.setPositionLogId(id);
         positionLog.setBattery(faker.number().numberBetween(1, 100));
         positionLog.setLatitude(new BigDecimal("34.7625659"));
@@ -29,10 +28,10 @@ public class PositionLogTestFactory {
         PositionLogDTO positionLogDTO = new PositionLogDTO();
 
         positionLogDTO.setPositionLogId(id);
-        positionLogDTO.setBattery(99);
+        positionLogDTO.setBattery(faker.number().numberBetween(1, 100));
         positionLogDTO.setLatitude(new BigDecimal("34.7625659"));
         positionLogDTO.setLongitude(new BigDecimal("137.6329023"));
-        positionLogDTO.setDeliverymanId(id);
+        positionLogDTO.setDeliverymanId(faker.number().randomNumber());
 
         return positionLogDTO;
     }
