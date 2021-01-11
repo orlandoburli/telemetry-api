@@ -15,20 +15,20 @@ public class PositionLog {
     private Long positionLogId;
 
     @Column(length = 9, precision = 7, nullable = false)
-    @DecimalMax(value = "90")
-    @DecimalMin(value = "-90")
+    @DecimalMax("90")
+    @DecimalMin("-90")
     @NotNull
     private BigDecimal latitude;
 
     @Column(length = 10, precision = 7, nullable = false)
-    @DecimalMax(value = "180")
-    @DecimalMin(value = "-180")
+    @DecimalMax("180")
+    @DecimalMin("-180")
     @NotNull
     private BigDecimal longitude;
 
     @Column(length = 3, nullable = false)
-    @DecimalMax(value = "100")
-    @DecimalMin(value = "1")
+    @DecimalMax("100")
+    @DecimalMin("1")
     @NotNull
     private Integer battery;
 

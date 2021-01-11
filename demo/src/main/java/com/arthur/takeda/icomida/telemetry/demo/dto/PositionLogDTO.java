@@ -12,19 +12,19 @@ public class PositionLogDTO {
 
     @NotNull(message = "Informe a latitude!")
     @Digits(fraction = 7, integer = 2)
-    @DecimalMax(value = "90")
-    @DecimalMin(value = "-90")
+    @DecimalMax("90")
+    @DecimalMin("-90")
     private BigDecimal latitude;
 
     @NotNull(message = "Informe a longitude!")
     @Digits(fraction = 7, integer = 3)
-    @DecimalMax(value = "180")
-    @DecimalMin(value = "-180")
+    @DecimalMax("180")
+    @DecimalMin("-180")
     private BigDecimal longitude;
 
     @NotNull(message = "Informe a bateria!")
-    @DecimalMax(value = "100")
-    @DecimalMin(value = "1")
+    @DecimalMax("100")
+    @DecimalMin("1")
     private Integer battery;
 
     @NotNull(message = "Informe o deliverymanId!")
